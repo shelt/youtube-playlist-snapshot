@@ -54,11 +54,8 @@ def snapshot(ID):
     tree = etree.ElementTree(playlists)
     open("plists.xml", 'w').close()
     tree.write("plists.xml")
-        
-    
-        
-        
-        
+
+
 def main():
     ids = input("Playlist ID(s): ")
     if ids == "":
@@ -66,7 +63,7 @@ def main():
             for plist in etree.parse("plists.xml").getroot().getchildren():
                 snapshot(plist.tag)
                 
-        except TodoError:
+        except FileNotFoundError:
             sys.exit("Error: No playlist IDs entered and no history found.")
             
     else:
